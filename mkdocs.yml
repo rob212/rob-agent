@@ -1,0 +1,6 @@
+site_name: Build an AI Agent
+theme:
+  name: material
+
+nav:
+  - Home: index.md

@@ -1,0 +1,39 @@
+[project]
+name = "rob-agent"
+version = "0.1.0"
+description = "AI agent built for learning"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "chromadb>=1.0.20",
+    "datasets>=4.5.0",
+    "fastmcp>=2.11.3",
+    "litellm>=1.81.13",
+    "mcp>=1.13.1",
+    "openai>=1.101.0",
+    "pandas>=2.3.3",
+    "pydantic>=2.11.7",
+    "python-dotenv>=1.1.1",
+    "tavily-python>=0.7.11",
+    "tqdm>=4.67.1",
+    "wikipedia>=1.4.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["scratch_agents*"]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.2.0",
+    "mkdocs<2.0",
+    "mkdocs-material>=9.7.2",
+    "ruff>=0.15.1",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
