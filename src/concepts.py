@@ -8,7 +8,7 @@ load_dotenv(find_dotenv())
 ## Basic call to LLM via LiteLLM wrapper
 
 response1 = completion(
-    model="gpt-5-mini", messages=[{"role": "user", "content": "My name is Jungjun"}]
+    model="gpt-5-mini", messages=[{"role": "user", "content": "My name is Rob"}]
 )
 print(response1.choices[0].message.content)
 
