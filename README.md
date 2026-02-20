@@ -145,6 +145,25 @@ This generates a site/ folder that can be deployed to:
 * Vercel
 * Any static host
 
+## 🤖 Running the agents
+
+In order to run the agents to see the results of how they respond to Gaia dataset questions. Run from the root of the project, specifying your desired agent. For example to run `agent_1`:
+
+```bash
+uv run python -m agents.agent_1
+```
+
+This will result in he first 20, Level 1 questions in the Gaia dataset being sent to all of the LLM models in the `MODELS` list in the agent. In the case of agent_1 this includes  "gpt-5","gpt-5-mini", "anthropic/claude-sonnet-4-5" and "anthropic/claude-haiku-4-5". 
+
+Once completed an Accuracy table will be displayed outlining the model, the "Judged Accuracy" of it's response compared with the accepted answer in the Gaia dataset. Finally the "Judged Solvable" outlines how many of the 20 tasks the LLM thought it could solve without any further information or tools. 
+
+| Model | Judged Accuracy | Judged Solvable
+| ------- | ------- | ------- |
+| gpt-5-mini | 6/20 (30%) | 8/20 (40%) |
+| gpt-5 | 10/20 (50%) | 12/20 (60%) |
+| anthropic/claude-sonnet-4-5 | 2/20 (10%) | 9/20 (45%) |
+| anthropic/claude-haiku-4-5 | 2/20 (10%) | 6/20 (30%) |
+
 ## 🤝 Contributions
 
 This repository is primarily an educational and research exercise.
