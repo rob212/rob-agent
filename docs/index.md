@@ -93,7 +93,7 @@ This project treats agent improvements as experiments — not assumptions.
 We progress in stages:
 
 1. [Our 1st agent - Closed LLM baseline](agent-1.md)
-2. [Tool integration](tools.md)
+2. [Tool integration](tool-definitions.md)
 
 Each stage introduces one new capability and measures its effect.
 

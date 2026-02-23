@@ -128,3 +128,152 @@ from datasets import load_dataset
 level1_problems = load_dataset("gaia-benchmark/GAIA", "2023_level1", split="validation")
 print(f"Number of Level 1 problems: {len(level1_problems)}")
 print(f" problems: {level1_problems.features}")
+
+
+## -----------------------------------------------------
+
+# Implementing a web search tool.
+# An essential capability for a research agent is the ability to access the web for up to date information that may not
+# be part of our LLM's training data.
+
+# we will achieve this via [Tavily](https://www.tavily.com/). Tavily allows for up to 1,000 free API calls per month.
+
+import os
+from tavily import TavilyClient
+from dotenv import load_dotenv
+
+load_dotenv()
+
+tavily_client = TavilyClient(os.getenv("TAVILY_API_KEY"))
+
+
+def search_web(query: str, max_results: int = 2) -> list:
+    response = tavily_client.search(query, max_results=max_results)
+    return response.get("results")
+
+
+search_web("Kipchoge's marathon world record")
+
+
+## -------------------------------------------------------
+
+# Expanding a web search with additional search options and basic error handling
+
+
+def search_web(
+    query: str,
+    max_results: int = 2,
+    topic: str = "general",
+    time_range: str | None = None,
+    country: str | None = None,
+) -> list | str:
+    """Search the web for the given query."""
+    try:
+        response = tavily_client.search(
+            query,
+            max_results=max_results,
+            topic=topic,
+            time_range=time_range,
+            country=country,
+        )
+        return response.get("results")
+    except Exception as e:
+        return f"Error: Search failed - {e}"
+
+
+results = search_web(
+    query="Kipchoge's marathon world record",
+    topic="news",
+    time_range="year",
+    country="united kingdom",
+)
+
+print(results)
+
+## -------------------------------------------------------------
+
+# Python `inspect` in order to extract a functions details as a building block for us
+# creating a utility function that automatically converts a Python function into a tool
+# definition
+
+import inspect
+
+
+def example_tool(input_1: str, input_2: int = 1):
+    """docstring for example_tool"""
+    return
+
+
+print(f"function name: {example_tool.__name__}")
+print(f"function docstring: {example_tool.__doc__}")
+print(f"function signature: {inspect.signature(example_tool)}")
+
+
+## -------------------------------------------------------------
+
+# Our utility function to automatically define out Structured Output tool definition for a given
+# function is as follows.
+
+
+def function_to_input_schema(func) -> dict:
+    type_map = {
+        str: "string",
+        int: "integer",
+        float: "number",
+        bool: "boolean",
+        list: "array",
+        dict: "object",
+        type(None): "null",
+    }
+
+    try:
+        signature = inspect.signature(func)
+    except ValueError as e:
+        raise ValueError(
+            f"Failed to get signature for function {func.__name__}: {str(e)}"
+        )
+
+    parameters = {}
+    for param in signature.parameters.values():
+        try:
+            param_type = type_map.get(param.annotation, "string")
+        except KeyError as e:
+            raise KeyError(
+                f"Unknown type annotation {param.annotation} for parameter {param.name}: {str(e)}"
+            )
+        parameters[param.name] = {"type": param_type}
+
+    required = [param.name for param in signature.parameters.values()]
+
+    return {
+        "type": "object",
+        "properties": parameters,
+        "required": required,
+    }
+
+
+def format_tool_definition(name: str, description: str, parameters: dict) -> dict:
+    return {
+        "type": "function",
+        "function": {
+            "name": name,
+            "description": description,
+            "parameters": parameters,
+        },
+    }
+
+
+def function_to_tool_definition(func) -> dict:
+    return format_tool_definition(
+        func.__name__, func.__doc__ or "", function_to_input_schema(func)
+    )
+
+
+# We test our new `function_to_tool_definition()` with our `search_web` function.
+
+search_tool_definition = function_to_tool_definition(search_web)
+print(search_tool_definition)
+
+
+# This results in the following Python dictionary
+# {'type': 'function', 'function': {'name': 'search_web', 'description': 'Search the web for the given query.', 'parameters': {'type': 'object', 'properties': {'query': {'type': 'string'}, 'max_results': {'type': 'integer'}, 'topic': {'type': 'string'}, 'time_range': {'type': 'string'}, 'country': {'type': 'string'}}, 'required': ['query', 'max_results', 'topic', 'time_range', 'country']}}}
