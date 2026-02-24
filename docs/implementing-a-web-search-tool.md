@@ -405,3 +405,9 @@ print(" ------------ context -------------------")
 print(json.dumps(context, indent=2, default=str))
 
 ```
+
+## Summary 
+
+Building our web search tool was relatively straight forward thanks to the Tavily client. However, Tavily was designed specifically for LLM applications, making the integration simple. If we were to consider building additional tools that searches your companies Slack workspace, or retrieves files from Google Drive, this begins to add significant complexity and maintenance. APIs evolve, services deprecate endpoints, change response formats and introduce new required parameters. 
+
+This problem is where Model Context Protocol (MCP) attempts to provide a solution. [MCP is the concept we will explore next](/docs/mcp.md). 
