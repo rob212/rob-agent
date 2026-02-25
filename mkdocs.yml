@@ -33,7 +33,9 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Prerequisites: prerequisites.md
-  - Our 1st Agent: agent-1.md
+  - Basic concepts: basic-concepts.md
+  - Building your first agent: building-your-first-agent.md
   - Tools:
       - Tool definition: tool-definitions.md
       - Web Search tool: implementing-a-web-search-tool.md
+      - MCP: mcp.md

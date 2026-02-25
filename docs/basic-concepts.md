@@ -1,4 +1,4 @@
-# 🤖 Building Your First Agent
+# 📜 Basic Concepts
 
 We will start by covering some basic concepts that we will utilise in our AI agents. To start we will simply be calling through to an LLM (OpenAI) via code.
 
@@ -15,13 +15,13 @@ All code examples, documentation, and tool definitions discussed in this guide c
 
 ## Concepts
 
-I created ['concepts.py'](https://github.com/rob212/rob-agent/blob/main/src/concepts.py) as a scratch-pad for experimenting with some of the basic concepts we will be using as we develop AI agents. This is the scratchpad I use to try out code and run quikly with `Shift + Enter` to understand how it works. Once satisfied, I build out AI agents using these concepts under the `/src/agents` directory.
+I created ['basic-concepts.py'](https://github.com/rob212/rob-agent/blob/main/src/basic-concepts.py) as a scratch-pad for experimenting with some of the basic concepts we will be using as we develop AI agents. This is the scratchpad I use to try out code and run quikly with `Shift + Enter` to understand how it works. Once satisfied, I build out AI agents using these concepts under the `/src/agents` directory.
 
 ## 🏗️ Step 1: The Basic Connection
 
 The foundation of any agent is the ability to communicate with a model. We start by creating a simple interface to send a prompt and receive a string.
 
-To do this I will use the **gpt-5-mini** model by OpenAI, in order to call it via the OpenAI python sdk you will need to [sign-up and create an API Key](https://platform.openai.com/api-keys). Note you will need to put some credit in your account ($5 is the minimum but should be suffiecient for this learning).
+To do this I will use the **gpt-5-mini** model by OpenAI, in order to call it via the OpenAI python sdk you will need to [sign-up and create an API Key](https://platform.openai.com/api-keys). Note you will need to put some credit in your account ($5 is the minimum but should be sufficient for this learning).
 
 Ensure you have copied the `.env.example` file to a new `.env` file where you can add your API Keys.
 
@@ -248,4 +248,50 @@ You can see some examples of a production agents system prompt as [Anthropic pub
 
 ## 📏 Measuring our Agents capabilities with Gaia
 
-...coming soon
+When working with the non-determinstic nature of LLMs (the same prompt will return different responses each time, due to the probabilstic nature of LLMs) traditional means of software testing are not appropriate. How do we know if our agent is actually getting better? We need a benchmark in place we can measure our agent against to allow us to assess whether each tweak we make to our prompts and logic we are actually making progress.
+
+I intened to make a 'Research Agent', a system that can gather information from multiple sources, analyse findings ans produce comprehensive answers. Therefore we need test cases that have clear, verifiable answers, represent realistic user requests and cover a range of difficulty levels.
+
+Gaia (General AI Assistants) is a dataset that includes a range of a questions that ranges in complexity based on it's level (1, 2, or 3). Level 1 questions generally require no tools, or at most one tool, with no more that n5 steps. Level 2 questions involve more steps, roughly between 5 and 10 and the combinaition of different tools. Level 3 questions are designed for a near-perfect general assistant, requiring arbitrarily long sequences of actions. An example of a potential Level 1 question is this:
+
+> "If Eliud Kipchoge could maintain his marathon pace indefinitely, how long would it take to run to the Moon?"
+
+As a user, for us to answer this question might comprise of the following steps:
+
+1. Google search to determine who 'Eliud Kipchoge' is.
+2. Once we have determined Eluid is a Olympian long-distance runner, we may look up Wikipedia to find his marathon pace.
+3. We then perform a web search to find the distance from the earth to the moon.
+4. We then discover due to the elliptical path of the moon, the distance varies and we need to decide on which measurement(s) to use.
+5. We perform a calculation using these numbers to determine the time it would take Eliud to run to the moon.
+
+To solve this our agent would need the ability to call tools to perform calculations, potentially the ability to access the web if it does not possess this information in its initial training data. Our agent also needs to be able to reason over a number of steps.
+
+> The answer by the way, rounded to the nearest 1000 hours is 17,000 hours.
+
+By using a subset of these Gaia questions we can assess the capability of our agent and measure it's accuracy as we iterate our implementation.
+
+### Loading the Gaia dataset
+
+We can obtain the Gaia dataset from [HuggingFace](https://huggingface.co/) (_oversimplification_: think of HuggingFace as the GitHub of AI models). You will need a HuggingFace account and must accept the dataset's terms of use before accessing it.
+
+Visit [https://huggingface.co/datasets/gaia-benchmark/GAIA](https://huggingface.co/datasets/gaia-benchmark/GAIA) and click the "Agree and access repository" button to accept the dataset's terms of use. You will then need to create an Access Token in your HuggingFace account and add this in your `.env` file under `HF_TOKEN` so that your code can retrieve the dataset.
+
+You will need the `datasets` library from HuggingFace in your dependencies:
+
+```bash
+uv add datasets
+```
+
+The following code will load the Level 1 problems from the Gaia dataset in Python code which we can use in our agent for evaluating their ability to solve them:
+
+```python
+from datasets import load_dataset
+
+level1_problems = load_dataset("gaia-benchmark/GAIA", "2023_level1", split="validation")
+print(f"Number of Level 1 problems: {len(level1_problems)}")
+print(f" problems: {level1_problems.features}")
+```
+
+## Building our first agent
+
+Now we have explored a number of concepts, we can create our first agent utilising these. I document this in [Building Your First Agent](building-your-first-agent.md).

@@ -54,6 +54,6 @@ For any file that you wish to interact with as a notebook, ensure you have added
 
 Now you can highight a portion of code in this `concepts.py` file and press `Shift + Enter` on your keyboard. Doing so will open an interactive notes panel for you to see the results of the code block running quickly.
 
-### 🏁 Getting started with our first agent
+### Learning some fundamental concepts
 
-Now let's move onto experimenting with our [first simple agent](/docs/agent-1.md)
+Let's move on to learning some [basic concepts](basic-concepts.md) that we will utilise in our ai agents.

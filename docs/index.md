@@ -1,7 +1,6 @@
 # 🤖 Welcome to Building an AI Agent from scratch
 
 > Building AI agents deliberately.  
-> Measuring everything.  
 > Improving incrementally.
 
 ---
@@ -13,8 +12,6 @@ This is a research-driven journey into building an AI agent **from first princip
 No frameworks.  
 No abstractions hiding the mechanics.  
 No magic.
-
-Each capability is added intentionally and evaluated against the **GAIA benchmark** to measure real performance improvements.
 
 This documentation captures lessons learned and hopefully acts as a useful tutorial for others.
 
@@ -89,8 +86,9 @@ This project treats agent improvements as experiments — not assumptions.
 
 We progress in stages:
 
-1. [Prequisites](prerequisites.md)
-2. [Our 1st agent - Closed LLM baseline](agent-1.md)
-3. [Tool integration](tool-definitions.md)
+1. [Prerequisites](prerequisites.md)
+2. [Basic concepts](basic-concepts.md)
+3. [Building your first agent](building-your-first-agent.md)
+4. [Tool integration](tool-definitions.md)
 
-Each stage introduces one new capability and measures its effect.
+Each stage introduces new capabilities and concepts.
