@@ -1,4 +1,5 @@
 site_name: Build an AI Agent
+site_url: https://rob212.github.io/rob-agent/
 theme:
   name: material
   features:
