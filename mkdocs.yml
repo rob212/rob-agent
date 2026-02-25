@@ -3,12 +3,11 @@ theme:
   name: material
   features:
     - content.code.copy
-  palette: 
-
+  palette:
     # Palette toggle for light mode
     - scheme: default
       toggle:
-        icon: material/brightness-7 
+        icon: material/brightness-7
         name: Switch to dark mode
 
     # Palette toggle for dark mode
@@ -30,13 +29,10 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
 
-
 nav:
   - Home: index.md
+  - Prerequisites: prerequisites.md
   - Our 1st Agent: agent-1.md
-  - Tools: 
-    - Tool definition: tool-definitions.md
-    - Web Search tool: implementing-a-web-search-tool.md
-
-
-  
+  - Tools:
+      - Tool definition: tool-definitions.md
+      - Web Search tool: implementing-a-web-search-tool.md

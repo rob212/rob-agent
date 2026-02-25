@@ -16,14 +16,13 @@ No magic.
 
 Each capability is added intentionally and evaluated against the **GAIA benchmark** to measure real performance improvements.
 
-This documentation captures lessons learned and hopefully acts as a useful tutorial for others. 
+This documentation captures lessons learned and hopefully acts as a useful tutorial for others.
 
 ---
 
 ## Why Build From Scratch?
 
 Modern agent frameworks are powerful — but they can abstract away the core elements of all AI Agents have in common. By building and Agent from scratch we will develop an understanding of the fundamentals of AI Agents as a solid foundational learning.
-
 
 By building each layer manually, we can:
 
@@ -34,22 +33,20 @@ By building each layer manually, we can:
 
 ---
 
-## What is an AI Agent? 
+## What is an AI Agent?
 
-An AI agent is a program that autonomously decides what actions to take and when to stop based on its current context and goals. At its core, it consists of three elements. 
+An AI agent is a program that autonomously decides what actions to take and when to stop based on its current context and goals. At its core, it consists of three elements.
 
-* 🧠 **Brain** 
-* 🔧 **Tools**
-* 🔁 **Loop**
+- 🧠 **Brain**
+- 🔧 **Tools**
+- 🔁 **Loop**
 
-   
-The LLM serves as the agent's brain. It understands the current situation and decides what to do next. 
+The LLM serves as the agent's brain. It understands the current situation and decides what to do next.
 
-Tools are the means of interacting with the external world—web search, code execution, and database access. 
+Tools are the means of interacting with the external world—web search, code execution, and database access.
 
-The Loop is the structure that repeats this process until the goal is achieved. 
-   
-   
+The Loop is the structure that repeats this process until the goal is achieved.
+
 The LLM being the "brain" means it doesn't just generate text—it decides which tool to use and when to stop. This is what distinguishes an agent from a plain LLM or traditional software.
 
 ---
@@ -62,12 +59,12 @@ A workflow is a system where developers explicitly design the sequence of operat
 
 There are numerous well documented workflow techniques including:
 
-* chaining - connect multiple LLM calls together in a predfined sequence
-* router - introduce conditional logic where LLM decides predefined path to take next.
+- chaining - connect multiple LLM calls together in a predfined sequence
+- router - introduce conditional logic where LLM decides predefined path to take next.
 
 AI Workflows have their place, and like all good software engineering, you should pick the right tool for the job. For this series, I will purposefully focus on AI Agents for learning purposes.
 
-In a professional setting, a hybrid approach is often the best solution. Combining determistic code, workflows and agents enables you to control the more predictable parts of the system, with agentic AI tackling well scoped tasks. This can be explanded upon to have multple sub-agents working with more focussed SLM (Small Language Models) to reduce costs and latency. This is out of scope, but is an interested topic to tackle after your explorations in with AI agents. 
+In a professional setting, a hybrid approach is often the best solution. Combining determistic code, workflows and agents enables you to control the more predictable parts of the system, with agentic AI tackling well scoped tasks. This can be explanded upon to have multple sub-agents working with more focussed SLM (Small Language Models) to reduce costs and latency. This is out of scope, but is an interested topic to tackle after your explorations in with AI agents.
 
 ## Evaluation Philosophy
 
@@ -92,8 +89,8 @@ This project treats agent improvements as experiments — not assumptions.
 
 We progress in stages:
 
-1. [Our 1st agent - Closed LLM baseline](agent-1.md)
-2. [Tool integration](tool-definitions.md)
+1. [Prequisites](prerequisites.md)
+2. [Our 1st agent - Closed LLM baseline](agent-1.md)
+3. [Tool integration](tool-definitions.md)
 
 Each stage introduces one new capability and measures its effect.
-

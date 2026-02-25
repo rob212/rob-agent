@@ -1,5 +1,26 @@
 # %%
 
+## Simple call through to OpenAI via the openai python library
+
+
+import os
+from openai import OpenAI
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+
+response = client.chat.completions.create(
+    model="gpt-5-mini",
+    messages=[{"role": "user", "content": "My name is Rob"}]
+)
+print(response.choices[0].message.content)
+
+## --------------------------------------------------------------
+
+## Introducing liteLLM as a wrapper around or LLM provider call 
+
 from litellm import completion
 from dotenv import load_dotenv, find_dotenv
 
@@ -42,6 +63,7 @@ print(assistant_message2)
 ## in a JSON format.
 
 from pydantic import BaseModel
+from litellm import completion
 
 
 class ExtractedInfo(BaseModel):
