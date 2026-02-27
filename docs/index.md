@@ -1,7 +1,6 @@
 # 🤖 Welcome to Building an AI Agent from scratch
 
-> Building AI agents deliberately.  
-> Improving incrementally.
+> Building AI agents deliberately. Improving incrementally.
 
 ---
 
@@ -50,22 +49,22 @@ The LLM being the "brain" means it doesn't just generate text—it decides which
 
 ## Workflows vs Agents
 
-In workflows, developers predefine the execution flow and use LLMs to perform specific steps within that structure. In agents, LLMs dynamically determine their own processes, deciding which actions to take and when to stop.
+A workflow is a system where developers explicitly design the sequence of operations, with LLMs executing specific steps within that predefined structure. In agents, LLMs dynamically determine their own processes, deciding which actions to take and when to stop.
 
-A workflow is a system where developers explicitly design the sequence of operations, with LLMs executing specific steps within that predefined structure. The key characteristic is predictability: given the same input, the system follows the same path through the workflow.
+The key characteristic of a workflow is predictability: given the same input, the system follows the same path through the workflow.
 
 There are numerous well documented workflow techniques including:
 
-- chaining - connect multiple LLM calls together in a predfined sequence
-- router - introduce conditional logic where LLM decides predefined path to take next.
+- **chaining** - connect multiple LLM calls together in a predfined sequence
+- **router** - introduce conditional logic where LLM decides predefined path to take next.
 
 AI Workflows have their place, and like all good software engineering, you should pick the right tool for the job. For this series, I will purposefully focus on AI Agents for learning purposes.
 
-In a professional setting, a hybrid approach is often the best solution. Combining determistic code, workflows and agents enables you to control the more predictable parts of the system, with agentic AI tackling well scoped tasks. This can be explanded upon to have multple sub-agents working with more focussed SLM (Small Language Models) to reduce costs and latency. This is out of scope, but is an interested topic to tackle after your explorations in with AI agents.
+In a professional setting, a hybrid approach is often the best solution. Combining determistic code, workflows and agents enables you to control the more predictable parts of the system, with agentic AI tackling well scoped tasks. This can be explanded upon to have multple sub-agents working with more focussed SLM (Small Language Models) to reduce costs and latency. This is out of scope, but is an interested topic to tackle after your explorations with AI agents.
 
 ## Evaluation Philosophy
 
-In 2023, Meta and HuggingFace released GAIA (General AI Assistants), a dataset that systematically collects tasks requiring agents. We will use it to track changes in our agent's performance as we add new techniques and capabilities. We'll see firsthand how each component, such as tool use, memory, and planning, actually improves the agent's problem-solving capabilities.
+In 2023, Meta and HuggingFace released GAIA (General AI Assistants), a dataset that systematically collects tasks requiring agents. We will use it to track changes in our agents performance as we add new techniques and capabilities. We'll see firsthand how each component, such as tool use, memory, and planning, actually improves the agent's problem-solving capabilities.
 
 GAIA consists of question-answer pairs. Each question requires multi-step reasoning, web searches, calculations, and more. They're difficult to solve with a single LLM call, and it's not easy to predefine a clear workflow either. These are problems that naturally require an agentic approach.
 
@@ -78,7 +77,7 @@ We measure:
 - **Unsolvable failure patterns**
 - **Capability gaps**
 
-This project treats agent improvements as experiments — not assumptions.
+This project treats agent improvements as experiments in order to widen our knowledge.
 
 ---
 

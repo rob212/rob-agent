@@ -1,8 +1,8 @@
 # 📜 Basic Concepts
 
-We will start by covering some basic concepts that we will utilise in our AI agents. To start we will simply be calling through to an LLM (OpenAI) via code.
+We will start by covering some basic concepts that we will utilise in our AI agents. We start by calling through to an LLM (OpenAI) via code.
 
-We willthen introduce [liteLLM](https://www.litellm.ai/) as a wrapper to access LLMs from our code. We will also do some basic evaluation of our results via the [GAIA dataset](https://huggingface.co/datasets/gaia-benchmark/GAIA).
+Subsequently, we will introduce [LiteLLM](https://www.litellm.ai/) as a wrapper to access LLMs from our code. We will also do some basic evaluation of our results via the [GAIA dataset](https://huggingface.co/datasets/gaia-benchmark/GAIA).
 
 Let's get started.
 
@@ -15,7 +15,7 @@ All code examples, documentation, and tool definitions discussed in this guide c
 
 ## Concepts
 
-I created ['basic-concepts.py'](https://github.com/rob212/rob-agent/blob/main/src/basic-concepts.py) as a scratch-pad for experimenting with some of the basic concepts we will be using as we develop AI agents. This is the scratchpad I use to try out code and run quikly with `Shift + Enter` to understand how it works. Once satisfied, I build out AI agents using these concepts under the `/src/agents` directory.
+I created ['basic-concepts.py'](https://github.com/rob212/rob-agent/blob/main/src/basic-concepts.py) to experiment with some of the basic concepts we will be using as we develop AI agents. This is the scratchpad I use to try out code and run quikly with `Shift + Enter` to understand how it works. Once satisfied, I build out AI agents using these concepts under the `/src/agents` directory.
 
 ## 🏗️ Step 1: The Basic Connection
 

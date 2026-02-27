@@ -22,16 +22,17 @@ If you are following along with the accompanying [code repo](https://github.com/
 uv sync
 ```
 
-If starting from scratch you will need to add dependencies individually to your own `pyproject.toml` via `uv add <dependency>` in your terminal.
+If starting from scratch you will need to add dependencies individually to your own `pyproject.toml` via the `uv add <dependency>` in your terminal. (See [uv documentation](https://docs.astral.sh/uv/) for more information).
 
 ## 🛠️ Accounts you will require
 
-- OpenAI account (optional to also have an Anthropic account if you wish to use other claude models)
+- OpenAI account
+- Anthropic account
 - Hugging face account
 
 ## 🗒️ Running Python samples as an interactive notebook inside VSCode - _Optional_
 
-This project uses a regular `.py` files (e.g. concepts.py) to experiment with code as we learn. In order to speed up feedback I use an interactive notebook inside VSCode. By adding special cell markers (# %%), the file behaves like a Jupyter notebook while remaining a standard Python script.
+This project uses a regular `.py` files (e.g. basic-concepts.py) to experiment with code as we learn. In order to speed up feedback I use an interactive notebook inside VSCode. By adding special cell markers (# %%), the file behaves like a Jupyter notebook while remaining a standard Python script.
 
 This allows you to run small sections of code independently and see the output immediately in a note view.
 
@@ -50,9 +51,9 @@ uv add --dev ipykernel
 
 Why? `ipykernel` allows your virtual environment to act as a Jupyter kernel so VSCode can execute code interactively.
 
-For any file that you wish to interact with as a notebook, ensure you have added `# %%` to the top of the file. (See `concepts.py` as an example). This is a _cell marker_ which instructs the VSCode Jupyter extension to treat any code below this as an executable notebook cell.
+For any file that you wish to interact with as a notebook, ensure you have added `# %%` to the top of the file. (See `basic-concepts.py` as an example). This is a _cell marker_ which instructs the VSCode Jupyter extension to treat any code below this as an executable notebook cell.
 
-Now you can highight a portion of code in this `concepts.py` file and press `Shift + Enter` on your keyboard. Doing so will open an interactive notes panel for you to see the results of the code block running quickly.
+Now you can highight a portion of code in this `basic-concepts.py` file and press `Shift + Enter` on your keyboard. Doing so will open an interactive notes panel for you to see the results of the code block running quickly.
 
 ### Learning some fundamental concepts
 
