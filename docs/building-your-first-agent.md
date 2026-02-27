@@ -4,9 +4,9 @@ To create our first AI agent, we will build upon the [basic concepts](basic-conc
 
 To complete our agent, we need to complete a number of tasks:
 
-- define our structures output response format
+- define our structured output response format
 - create our system prompt to elicit a more relevent LLM response
-- create an `solve_problem` with API calling and error handling
+- create a `solve_problem` with API calling and error handling
 - select which models to test
 - establish how we'll judge correctness
 
