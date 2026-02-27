@@ -124,7 +124,7 @@ HF_KEY=your_huggingface_key
 
 ## 🤖 Running the agents
 
-In order to run the agents to see the results of how they respond to Gaia dataset questions. Run from the root of the project, specifying your desired agent. For example to run `agent_1`:
+In order to run the agents to see the results of how they respond to Gaia dataset questions. Run from the `src` directory in the project, specifying your desired agent. For example to run `agent_1`:
 
 ```bash
 uv run python -m agents.agent_1

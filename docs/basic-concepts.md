@@ -292,6 +292,45 @@ print(f"Number of Level 1 problems: {len(level1_problems)}")
 print(f" problems: {level1_problems.features}")
 ```
 
+Examing the output of these, allows us to find the "Eluid Kipchoge" marathon problem:
+
+```python
+{
+    "task_id": "e1fc63a2-da7a-432f-be78-7c4a95598703",
+    "question": (
+        "If Eliud Kipchoge could maintain his record-making marathon pace "
+        "indefinitely, how many thousand hours would it take him to run the "
+        "distance between the Earth and the Moon at its closest approach? "
+        "Please use the minimum perigee value on the Wikipedia page for the Moon "
+        "when carrying out your calculation. Round your result to the nearest "
+        "1000 hours and do not use any comma separators if necessary."
+    ),
+    "level": 1,
+    "final_answer": "17",
+    "file_name": "",
+    "annotator_metadata": {
+        "steps": (
+            "1. Googled Eliud Kipchoge marathon pace.\n"
+            "2. Found the minimum perigee distance to the Moon.\n"
+            "3. Calculated total hours at constant pace.\n"
+            "4. Rounded to the nearest 1000 hours."
+        ),
+        "tools": [
+            "Web browser",
+            "Search engine",
+            "Calculator",
+        ],
+        "num_tools": 3,
+    },
+}
+```
+
+The 'question' field contains what a user would ask our agent. 'final_answer' is what we will assert to be the correct answer, in this case simply "17." The 'file_name' field indicates whether the problem includes an attached file (empty here means no attachment). The 'annotator_metadata' reveals what the problem creators needed to solve it, which includes a web browser, a search engine, and a calculator.
+
+This metadata is particularly revealing. Even though this is a Level 1 problem, the "easiest" category, the annotators needed three different tools to solve it. They had to search for Kipchoge's marathon pace, look up the Earth-Moon perigee distance on Wikipedia, and perform calculations.
+
 ## Building our first agent
 
-Now we have explored a number of concepts, we can create our first agent utilising these. I document this in [Building Your First Agent](building-your-first-agent.md).
+Now we have explored a number of concepts, we can create our first agent utilising these. We then test our agent using some Level 1 questions from the Gaia dataset.
+
+I document this in [Building Your First Agent](building-your-first-agent.md).

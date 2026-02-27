@@ -1,5 +1,3 @@
-# %%
-
 ## Agent 1
 ##
 ## Prompt directly to LLM.
@@ -114,10 +112,10 @@ async def run():
     stats = generate_accuracy_table(results)
     unsolvable = generate_unsolvable_summary(results)
 
-    print("\n=== Accuracy Table ===")
+    print("\n============= Accuracy Table =============")
     print(stats)
 
-    print("\n=== Unsolvable Summary ===")
+    print("\n============= Unsolvable Summary =============")
     print(unsolvable)
 
 

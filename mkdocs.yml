@@ -36,6 +36,6 @@ nav:
   - Basic concepts: basic-concepts.md
   - Building your first agent: building-your-first-agent.md
   - Tools:
-      - Tool definition: tool-definitions.md
+      - Tool definitions: tool-definitions.md
       - Web Search tool: implementing-a-web-search-tool.md
       - MCP: mcp.md
