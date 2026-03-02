@@ -39,11 +39,17 @@ An AI agent is a program that autonomously decides what actions to take and when
 
 The LLM serves as the agent's brain. It understands the current situation and decides what to do next.
 
-Tools are the means of interacting with the external world—web search, code execution, and database access.
+Tools are the means of interacting with the external world—web search, code execution, database access, APIs and messaging services.
 
 The Loop is the structure that repeats this process until the goal is achieved.
 
 The LLM being the "brain" means it doesn't just generate text—it decides which tool to use and when to stop. This is what distinguishes an agent from a plain LLM or traditional software.
+
+How does this differ from just using a traditional LLM like ChatGPT?
+
+Traditional LLM-based applications typically follow a request–response pattern: a user submits input, the model generates output, and the interaction ends. While this pattern is effective—and already transformative—for many use cases, it limits automation to single-step interactions. It also requires humans to continuously guide the model’s reasoning and confines the model to providing information rather than acting on the user’s behalf.
+
+AI agents operate differently. An agent receives a goal and executes a loop: it evaluates the current context, plans next steps, invokes tools or data sources, observes the result, and adjusts its behavior accordingly.
 
 ---
 
@@ -61,6 +67,16 @@ There are numerous well documented workflow techniques including:
 AI Workflows have their place, and like all good software engineering, you should pick the right tool for the job. For this series, I will purposefully focus on AI Agents for learning purposes.
 
 In a professional setting, a hybrid approach is often the best solution. Combining determistic code, workflows and agents enables you to control the more predictable parts of the system, with agentic AI tackling well scoped tasks. This can be explanded upon to have multple sub-agents working with more focussed SLM (Small Language Models) to reduce costs and latency. This is out of scope, but is an interested topic to tackle after your explorations with AI agents.
+
+## AI Agents vs Agentic Systems
+
+It's important to differentiate between an AI Agent and an Agentic System at this stage of our learning.
+
+An AI agent is an individual, goal-directed component. As systems scale, agents often operate together. Supervisory architectures allow a coordinating agent to delegate tasks to specialized agents, while swarm-style approaches enable multiple agents to work in parallel and converge on outcomes through iteration. These patterns support more complex workflows while preserving modularity.
+
+An agentic system is this broader environment that supports agents through orchestration, tooling, identity, policies, and evaluation. With it comes communication protocols such as Agent-to-Agent (A2A) which are out of scope for us. (However we will cover Model Context Protocol - MCP as we develop our AI Agent in this learning.)
+
+For now, we will focus on AI Agents.
 
 ## Evaluation Philosophy
 
