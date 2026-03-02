@@ -61,12 +61,12 @@ The key characteristic of a workflow is predictability: given the same input, th
 
 There are numerous well documented workflow techniques including:
 
-- **chaining** - connect multiple LLM calls together in a predfined sequence
+- **chaining** - connect multiple LLM calls together in a predefined sequence
 - **router** - introduce conditional logic where LLM decides predefined path to take next.
 
 AI Workflows have their place, and like all good software engineering, you should pick the right tool for the job. For this series, I will purposefully focus on AI Agents for learning purposes.
 
-In a professional setting, a hybrid approach is often the best solution. Combining determistic code, workflows and agents enables you to control the more predictable parts of the system, with agentic AI tackling well scoped tasks. This can be explanded upon to have multple sub-agents working with more focussed SLM (Small Language Models) to reduce costs and latency. This is out of scope, but is an interested topic to tackle after your explorations with AI agents.
+In a professional setting, a hybrid approach is often the best solution. Combining determistic code, workflows and agents enables you to control the more predictable parts of the system, with agentic AI tackling well scoped tasks. This can be expanded upon to have multple sub-agents working with more focussed SLM (Small Language Models) to reduce costs and latency. This is out of scope, but is an interested topic to tackle after your explorations with AI agents.
 
 ## AI Agents vs Agentic Systems
 
@@ -104,6 +104,7 @@ We progress in stages:
 1. [Prerequisites](prerequisites.md)
 2. [Basic concepts](basic-concepts.md)
 3. [Building your first agent](building-your-first-agent.md)
-4. [Tool integration](tool-definitions.md)
+4. [Tools](tool-definitions.md)
+5. [Loop](react.md)
 
 Each stage introduces new capabilities and concepts.
