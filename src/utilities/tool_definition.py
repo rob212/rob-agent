@@ -92,3 +92,15 @@ def simple_agent_loop(system_prompt: str, question: str, tooling, model: str):
                 )
         else:
             return assistant_message.content, messages
+
+def mcp_tools_to_openai_format(mcp_tools) -> list[dict]:
+    """Convert MCP tool definitions to OpenAI tool format."""
+    return [
+        _format_tool_definition(
+            name=tool.name,
+            description=tool.description,
+            parameters=tool.inputSchema,
+        )
+        for tool in mcp_tools.tools
+    ]
+ 

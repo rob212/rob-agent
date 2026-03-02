@@ -39,3 +39,4 @@ nav:
       - Tool definitions: tool-definitions.md
       - Web Search tool: implementing-a-web-search-tool.md
       - MCP: mcp.md
+  - ReAct: react.md

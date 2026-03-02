@@ -27,7 +27,7 @@ async def main():
                 print(f"  - {tool.name}: {tool.description[:60]}...")
 
             result = await session.call_tool(
-                "tavily-search",
+                "tavily_search",
                 arguments={
                     "query": "Who won the womens curling final at the 2026 winter Olympics?"
                 },

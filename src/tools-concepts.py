@@ -311,3 +311,6 @@ print(search_tool_definition)
 
 # This results in the following Python dictionary
 # {'type': 'function', 'function': {'name': 'search_web', 'description': 'Search the web for the given query.', 'parameters': {'type': 'object', 'properties': {'query': {'type': 'string'}, 'max_results': {'type': 'integer'}, 'topic': {'type': 'string'}, 'time_range': {'type': 'string'}, 'country': {'type': 'string'}}, 'required': ['query', 'max_results', 'topic', 'time_range', 'country']}}}
+
+
+## -----------------------------------------
