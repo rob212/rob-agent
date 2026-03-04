@@ -3,7 +3,7 @@ import json
 from litellm import completion
 
 
-def _function_to_input_schema(func) -> dict:
+def function_to_input_schema(func) -> dict:
     type_map = {
         str: "string",
         int: "integer",
@@ -40,7 +40,7 @@ def _function_to_input_schema(func) -> dict:
     }
 
 
-def _format_tool_definition(name: str, description: str, parameters: dict) -> dict:
+def format_tool_definition(name: str, description: str, parameters: dict) -> dict:
     return {
         "type": "function",
         "function": {
