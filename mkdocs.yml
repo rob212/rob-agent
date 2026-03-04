@@ -43,3 +43,4 @@ nav:
       - ReAct: react.md
       - ExecutionContext: execution-context.md
       - Tool Abstraction: tool-abstraction.md
+      - LLM Communication Layer: llm-communication-layer.md
