@@ -1,17 +1,13 @@
 # Tool extraction concepts 
 
-from typing import Any, Dict, Union, Optional, Callable
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Literal, Union, Callable
 from pydantic import BaseModel
 import uuid
 import asyncio
 import datetime
 import inspect
-from typing import List, Optional, Dict, Any
-from pydantic import BaseModel, Field
-from typing import Literal, Optional, Union, List
 from pydantic import BaseModel, Field
 from utilities.tool_definition import function_to_input_schema, format_tool_definition
 
