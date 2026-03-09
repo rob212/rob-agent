@@ -45,4 +45,6 @@ nav:
       - Tool Abstraction: tool-abstraction.md
       - LLM Communication Layer: llm-communication-layer.md
   - Building your second agent: building-your-second-agent.md
-  - AWS Strands: aws-strands.md
+  - AWS Strands:
+      - Our first Strands agent: aws-strands-setup.md
+      - Agent with custom configuration: aws-strands-custom-config.md
