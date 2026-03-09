@@ -44,3 +44,5 @@ nav:
       - ExecutionContext: execution-context.md
       - Tool Abstraction: tool-abstraction.md
       - LLM Communication Layer: llm-communication-layer.md
+  - Building your second agent: building-your-second-agent.md
+  - AWS Strands: aws-strands.md

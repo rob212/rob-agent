@@ -151,4 +151,66 @@ The logic handles each ContentItem type differently. Messages become standard me
 
 ## Parsing responses
 
-... coming soon
+Our `_parse_response` method converts API responses back into our standard format. The method handles both text responses and tool calls. When the LLM returns text, we wrap it in a Message. When it requests tools, we create ToolCall objects. Both can appear in the same response, and our ContentItem list accommodates this naturally.
+
+```python
+def _parse_response(self, response) -> LlmResponse:
+    """Convert API response to LlmResponse."""
+    choice = response.choices[0]
+    content_items = []
+
+    if choice.message.content:
+        content_items.append(Message(
+            role="assistant",
+            content=choice.message.content
+        ))
+
+    if choice.message.tool_calls:
+        for tc in choice.message.tool_calls:
+            content_items.append(ToolCall(
+                tool_call_id=tc.id,
+                name=tc.function.name,
+                arguments=json.loads(tc.function.arguments)
+            ))
+
+    return LlmResponse(
+        content=content_items,
+        usage_metadata={
+            "input_tokens": response.usage.prompt_tokens,
+            "output_tokens": response.usage.completion_tokens,
+        }
+    )
+```
+
+## Putting it all together
+
+With all three components defined, here is how they work together. We create an LlmClient with a model identifier, build an LlmRequest containing our instructions and conversation contents and call `generate` to get an LlmResponse. The response's content list contains the LLM's output as ContentItem objects, which we can iterate to extract the answer.
+
+```python
+from react_agent import LlmClient, LlmRequest, Message
+
+# Create client
+client = LlmClient(model="gpt-5-mini")
+
+# Build request
+request = LlmRequest(
+    instructions=["You are a helpful assistant."],
+    contents=[Message(role="user", content="What is 2 + 2?")],
+)
+
+# Generate response
+response = await client.generate(request)
+
+# Response contains the answer
+for item in response.content:
+    if isinstance(item, Message):
+        print(item.content)  # "4"
+```
+
+Our communication layer provides clean seperation of concerns. LlmRequest packages what to send. LlmClient handles how to send it. LlmResponse standardizes what comes back. Our agent loop code contains relatively little 'AI' specific code, it's standard Python code with solid software engineering principals and concepts. AI should be treated as a tool, and is not a replacement for fundamental engineering.
+
+## Summary
+
+We have spent some time focussing on some fundamental building blocks of our AI agent loop. We defined a `ExecutionContext` to store our state, tools are unified under `BaseTool` and `LlmClient` handles LLM communication. Now we are ready to build an `Agent` class that orchestrates everything and allows us to build another AI agent using these components we have defined.
+
+Follow along in [Building your second agent](building-your-second-agent.md).

@@ -26,8 +26,10 @@ Examing this sequence, we can identify three distinct types of occurences:
 Let's define these as data types in Python using Pydantic.
 
 ```python
-from typing import Literal, Optional, Union, List
-from pydantic import BaseModel, Field
+# react_agents/types/contents.py
+
+from typing import Literal, Union
+from pydantic import BaseModel
 
 class Message(BaseModel):
     """A text message in the conversation."""
@@ -93,6 +95,8 @@ Each step in the our agent's execution becomes an Event, creating a complete aud
 Now we know what to store, implementing our `ExecutionContext` is fairly straightforward.
 
 ```python
+# react_agents/models/execution_context.py
+
 from dataclasses import dataclass, field
 from typing import List, Dict, Any, Optional
 from ..types.events import Event.  # location of our previously defined Event
